@@ -1,4 +1,5 @@
 ﻿using DBFighters.Enums;
+using DBFighters.Managers;
 using DBFighters.Views.Screens;
 using DBFighters.Windows;
 using Microsoft.Xna.Framework;
@@ -46,6 +47,7 @@ namespace DBFighters
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            AssetsManager.Load(GraphicsDevice);
             ScreenManager.LoadContent(Content);
         }
 

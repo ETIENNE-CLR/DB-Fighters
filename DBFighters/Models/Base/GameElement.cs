@@ -53,14 +53,14 @@ namespace DBFighters.Models.Base
         public bool Flipped { get; protected set; }
 
         /// <summary>
-        /// MyTexture de l'élement
+        /// Texture de l'élement
         /// </summary>
-        public MyTexture MyTexture => !string.IsNullOrEmpty(TextureName) ? AssetsManager.GetTexture(TextureName) : null;
+        public MyTexture Texture => !string.IsNullOrEmpty(TextureName) ? AssetsManager.GetTexture(TextureName) : null;
 
         /// <summary>
         /// Dimension de l'élement
         /// </summary>
-        public Size Size => (MyTexture != null) ? new Size(MyTexture.Img.Width, MyTexture.Img.Height) : new Size();
+        public Size Size => (Texture != null) ? new Size(Texture.Img.Width, Texture.Img.Height) : new Size();
 
         /// <summary>
         /// Hitbox de l'élement

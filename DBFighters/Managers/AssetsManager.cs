@@ -1,4 +1,5 @@
 ﻿using DBFighters.Config;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -25,12 +26,22 @@ namespace DBFighters.Managers
         public static Texture2D WhitePixel { get; set; }
 
         /// <summary>
+        /// Permet de charger les pixels
+        /// </summary>
+        /// <param name="graphicsDevice"></param>
+        public static void Load(GraphicsDevice graphicsDevice)
+        {
+            WhitePixel = new Texture2D(graphicsDevice, 1, 1);
+            WhitePixel.SetData(new[] { Color.White });
+        }
+
+        /// <summary>
         /// Permet de charger une texture
         /// </summary>
         /// <param name="content">Content qui chargera les textures</param>
         /// <param name="name">Nom de la texture</param>
         /// <param name="src">Source de la texture</param>
-        /// <returns>MyTexture chargée</returns>
+        /// <returns>Texture chargée</returns>
         public static MyTexture LoadTexture(ContentManager content, string name, string src)
         {
             string key = name.ToLower();

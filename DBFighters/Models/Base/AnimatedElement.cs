@@ -61,10 +61,7 @@ namespace DBFighters.Models.Base
         /// Elle doit redéfinir la propriété dans chaque classe hérité !
         /// </summary>
         public abstract void UpdateFlipped();
-        public void LoadContent(ContentManager content)
-        {
-            // ...
-        }
+        public abstract void LoadContent(ContentManager content);
 
         public void Update(GameTime gameTime)
         {
@@ -73,7 +70,7 @@ namespace DBFighters.Models.Base
 
         public void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            if (MyTexture == null) throw new Exception("La texture n'a pas été chargé.");
+            if (Texture == null) throw new Exception("La texture n'a pas été chargé.");
 
             // Init
             Animation anim = CurrentAnimation;
@@ -83,7 +80,7 @@ namespace DBFighters.Models.Base
             SpriteEffects effects = this.Flipped ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
             // Draw
-            // spriteBatch.Draw(...);
+            spriteBatch.Draw(this.Texture.Img, Position, anim.CurrentFrame, Color.White, 0f, Vector2.Zero, Scale, effects, 0f);
 
             // Show Hitbox
             if (ShowHitbox)
