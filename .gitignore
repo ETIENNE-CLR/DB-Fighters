@@ -1,0 +1,62 @@
+# GENERAL
+
+# VSCode files
+**/.vs/
+**/.vscode/
+
+# Personnal / WSL files
+**/~$
+**desktop.ini
+**Zone.Identifier
+**/.github/
+
+# LaTeX files
+**.aux
+**.fdb_latexmk
+**.fls
+**.log
+**.out
+**.synctex.gz
+**.toc
+**.nav
+**.snm
+**.vrb
+
+# Linux trash
+.Trash-*
+
+# macOS
+.DS_Store
+
+# CSHARP VISUAL STUDIO
+# Build results
+bin/
+obj/
+
+# Content Pipeline intermediate files
+*.xnb
+*.cache
+
+# Rider / JetBrains
+.idea/
+
+# Debugging & runtime files
+*.dll
+*.exe
+*.pdb
+
+# NuGet packages
+*.nupkg
+packages/
+project.lock.json
+project.assets.json
+
+# Visual Studio Code settings
+.vscode/
+
+# MonoGame Pipeline Tool cache
+Content/bin/
+Content/obj/
+
+# Logs
+*.log
