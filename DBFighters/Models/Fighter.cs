@@ -27,7 +27,7 @@ namespace DBFighters.Models
         /// <summary>
         /// La vitesse de base
         /// </summary>
-        public static Vector2 SPEED_BASE = new Vector2(6, 5);
+        public static Vector2 SPEED_BASE = new Vector2(6, 15);
 
         /// <summary>
         /// Gravité

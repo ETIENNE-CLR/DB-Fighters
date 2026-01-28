@@ -18,7 +18,7 @@ namespace DBFighters.Config
         public float GroundPositionY { get; set; }
 
         /// <summary>
-        /// La gravité environnante
+        /// L'intensité de la gravité environnante
         /// </summary>
         public float GravityEnvironnement { get; set; }
 
@@ -35,10 +35,10 @@ namespace DBFighters.Config
         /// <summary>
         /// Constructeur de la classe...
         /// </summary>
-        /// <param name="gravityEnvironnement">La gravité environnante</param>
+        /// <param name="gravityEnvironnement">L'intensité de la gravité environnante</param>
         /// <param name="maxFallSpeed">La vitesse maximale lorsqu'on tombe</param>
         /// <param name="enabled">Si la gravité est active</param>
-        public GravityComponent(float gravityEnvironnement = 2f, float maxFallSpeed = 20f, bool enabled = true)
+        public GravityComponent(float gravityEnvironnement = 30f, float maxFallSpeed = 100f, bool enabled = true)
         {
             GravityEnvironnement = gravityEnvironnement;
             MaxFallSpeed = maxFallSpeed;
