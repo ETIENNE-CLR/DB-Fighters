@@ -30,7 +30,7 @@ namespace DBFighters.Models.Base
         public string AnimationName { get; protected set; }
 
 
-        public Size Dimension => new Size(CurrentAnimation.CurrentFrame.Width, CurrentAnimation.CurrentFrame.Height);
+        public override Size Dimension => new Size(CurrentAnimation.CurrentFrame.Width, CurrentAnimation.CurrentFrame.Height);
 
         /// <summary>
         /// L'animation courante
@@ -64,7 +64,7 @@ namespace DBFighters.Models.Base
         public abstract void UpdateFlipped();
         public abstract void LoadContent(ContentManager content);
 
-        public void Update(GameTime gameTime)
+        public virtual void Update(GameTime gameTime)
         {
             CurrentAnimation.Update(gameTime);
         }

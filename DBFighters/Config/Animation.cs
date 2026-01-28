@@ -29,7 +29,7 @@ namespace DBFighters.Config
         /// <summary>
         /// Le temps écoulé de l'animation
         /// </summary>
-        private float ElapsedSeconds;
+        private float ElapsedTime;
 
         /// <summary>
         /// Si l'animation est terminée ou non
@@ -73,7 +73,7 @@ namespace DBFighters.Config
             FrameDuration = frameDuration;
             FrameIndex = 0;
 
-            ElapsedSeconds = 0f;
+            ElapsedTime = 0f;
             Loop = loop;
 
             Finished = false;
@@ -132,7 +132,7 @@ namespace DBFighters.Config
         public void Reset()
         {
             FrameIndex = 0;
-            ElapsedSeconds = 0f;
+            ElapsedTime = 0f;
             Finished = false;
         }
 
@@ -162,14 +162,14 @@ namespace DBFighters.Config
             if (Finished && !Loop) return;
 
             // DeltaTime
-            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            if (deltaTime <= 0f) return;
-            ElapsedSeconds += deltaTime;
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalMilliseconds;
+            if (deltaTime <= 0) return;
+            ElapsedTime += deltaTime;
 
             // Update
-            while (ElapsedSeconds >= FrameDuration)
+            while (ElapsedTime >= FrameDuration)
             {
-                ElapsedSeconds -= FrameDuration;
+                ElapsedTime -= FrameDuration;
 
                 // Aller vers la prochaine frame
                 FrameIndex++;

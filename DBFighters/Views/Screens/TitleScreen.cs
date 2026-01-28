@@ -1,5 +1,4 @@
-﻿using DBFighters.Models;
-using DBFighters.Windows;
+﻿using DBFighters.Windows;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -13,26 +12,22 @@ namespace DBFighters.Views.Screens
 {
     internal class TitleScreen : MonogameWindow
     {
-        private Fighter f;
-
-        public TitleScreen(double ratio, int baseWidth = 520) : base(ratio, baseWidth)
+        public TitleScreen(double ratio, int baseWidth) : base(ratio, baseWidth)
         {
-            f = new Fighter(new Vector2(0, 0), Vector2.Zero);
         }
 
         public override void LoadContent(ContentManager content)
         {
-            f.LoadContent(content);
         }
 
         public override void Update(GameTime gameTime)
         {
-            f.Update(gameTime);
+            throw new NotImplementedException();
         }
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            f.Draw(spriteBatch, gameTime);
+            throw new NotImplementedException();
         }
     }
 }

@@ -43,9 +43,9 @@ namespace DBFighters.Models.Base
         public bool ShowHitbox { get; protected set; }
 
         /// <summary>
-        /// Si l'élement doit se draw à -50% de sa position
+        /// La translation de l'élement
         /// </summary>
-        public bool Translate { get; protected set; }
+        public Translation Translate { get; protected set; }
 
         /// <summary>
         /// Si l'élement est retourné
@@ -58,9 +58,9 @@ namespace DBFighters.Models.Base
         public MyTexture Texture => !string.IsNullOrEmpty(TextureName) ? AssetsManager.GetTexture(TextureName) : null;
 
         /// <summary>
-        /// Dimension de l'élement
+        /// Dimension de l'élément
         /// </summary>
-        public Size Dimension => (Texture != null && Texture.Loaded) ? new Size(Texture.Img.Width, Texture.Img.Height) : new Size();
+        public virtual Size Dimension => (Texture != null && Texture.Loaded) ? new Size(Texture.Img.Width, Texture.Img.Height) : new Size();
 
         /// <summary>
         /// Hitbox de l'élement
@@ -78,11 +78,8 @@ namespace DBFighters.Models.Base
                 );
 
                 // Translation
-                if (Translate)
-                {
-                    rect.X -= ((int)LogicsUtils.GetNumberFromPercentage(50, rect.Width));
-                    rect.Y -= ((int)LogicsUtils.GetNumberFromPercentage(50, rect.Height));
-                }
+                if (Translate.X) rect.X -= ((int)LogicsUtils.GetNumberFromPercentage(50, rect.Width));
+                if (Translate.Y) rect.Y -= ((int)LogicsUtils.GetNumberFromPercentage(50, rect.Height));
                 return rect;
             }
         }
@@ -101,7 +98,7 @@ namespace DBFighters.Models.Base
 
             TextureName = null;
             ShowHitbox = false;
-            Translate = false;
+            Translate = Translation.None;
         }
     }
 }

@@ -34,11 +34,12 @@ namespace DBFighters
             ScreenManager = new ScreenManager(_graphics, new Dictionary<NamesViews, MonogameWindow>()
             {
                 { NamesViews.TITLESCREEN, new TitleScreen(RATIO, BASE_WIDTH) },
+                { NamesViews.GAMESCREEN, new GameScreen(RATIO, BASE_WIDTH) },
             });
-            ScreenManager.SetScreen(NamesViews.TITLESCREEN);
+            ScreenManager.SetScreen(NamesViews.GAMESCREEN);
 
             // Init window
-            this.Window.Title = "Dragon Ball Fighters";
+            Window.Title = "Dragon Ball Fighters";
             base.Initialize();
         }
 

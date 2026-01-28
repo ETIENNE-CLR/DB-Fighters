@@ -15,7 +15,7 @@ namespace DBFighters.Windows
         public Rectangle View { get; private set; }
 
         // Constructeur de la classe...
-        public MonogameWindow(double ratio, int baseWidth = 520)
+        public MonogameWindow(double ratio, int baseWidth)
         {
             View = new Rectangle(0, 0, baseWidth, (int)(baseWidth * ratio));
         }
