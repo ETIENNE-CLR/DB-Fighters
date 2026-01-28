@@ -1,4 +1,5 @@
 ﻿using DBFighters.Interfaces;
+using DBFighters.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -34,7 +35,7 @@ namespace DBFighters.Config
         /// <summary>
         /// Si la texture a été chargé
         /// </summary>
-        public bool Loaded { get; private set; }
+        public bool Loaded => AssetsManager.GetTexture(Name) != null;
 
         /// <summary>
         /// Constructeur de la classe...
@@ -50,7 +51,7 @@ namespace DBFighters.Config
 
         public void LoadContent(ContentManager content)
         {
-            content.Load<Texture2D>(Src);
+            Img = content.Load<Texture2D>(Src);
         }
 
         public void Update(GameTime gameTime)

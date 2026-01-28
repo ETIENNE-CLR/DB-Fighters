@@ -67,7 +67,9 @@ namespace DBFighters
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            _spriteBatch.Begin();
             ScreenManager.CurrentScreen.Draw(_spriteBatch, gameTime);
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }

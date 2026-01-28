@@ -60,7 +60,7 @@ namespace DBFighters.Models.Base
         /// <summary>
         /// Dimension de l'élement
         /// </summary>
-        public Size Size => (Texture != null) ? new Size(Texture.Img.Width, Texture.Img.Height) : new Size();
+        public Size Size => (Texture != null && Texture.Loaded) ? new Size(Texture.Img.Width, Texture.Img.Height) : new Size();
 
         /// <summary>
         /// Hitbox de l'élement

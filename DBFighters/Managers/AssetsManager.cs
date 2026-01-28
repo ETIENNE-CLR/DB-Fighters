@@ -45,10 +45,11 @@ namespace DBFighters.Managers
         public static MyTexture LoadTexture(ContentManager content, string name, string src)
         {
             string key = name.ToLower();
-            if (textures[key] == null)
+            if (!textures.TryGetValue(key, out MyTexture recoveredTexture))
             {
                 MyTexture texture = new MyTexture(name, src);
                 texture.LoadContent(content);
+                textures.Add(key, texture);
             }
             VerifyIfTextureCloned();
             return textures[key];
