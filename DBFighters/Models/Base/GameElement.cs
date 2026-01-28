@@ -35,7 +35,7 @@ namespace DBFighters.Models.Base
         /// <summary>
         /// Facteur de zoom pour l'affichage
         /// </summary>
-        public int Scale { get; protected set; }
+        public double Scale { get; protected set; }
 
         /// <summary>
         /// Indicateur d'affichage de la hitbox
@@ -60,7 +60,7 @@ namespace DBFighters.Models.Base
         /// <summary>
         /// Dimension de l'élement
         /// </summary>
-        public Size Size => (Texture != null && Texture.Loaded) ? new Size(Texture.Img.Width, Texture.Img.Height) : new Size();
+        public Size Dimension => (Texture != null && Texture.Loaded) ? new Size(Texture.Img.Width, Texture.Img.Height) : new Size();
 
         /// <summary>
         /// Hitbox de l'élement
@@ -73,8 +73,8 @@ namespace DBFighters.Models.Base
                 Rectangle rect = new Rectangle(
                     (int)Position.X,
                     (int)Position.Y,
-                    Size.Width * this.Scale,
-                    Size.Height * this.Scale
+                    ((int)(Dimension.Width * Scale)),
+                    ((int)(Dimension.Height * Scale))
                 );
 
                 // Translation
@@ -93,7 +93,7 @@ namespace DBFighters.Models.Base
         /// <param name="position">La position initiale de l'entité</param>
         /// <param name="velocity">La vélocité initiale de l'entité</param>
         /// <param name="scale">Facteur de zoom pour l'affichage</param>
-        public GameElement(Vector2 position, Vector2 velocity, int scale)
+        public GameElement(Vector2 position, Vector2 velocity, double scale)
         {
             Position = position;
             Velocity = velocity;

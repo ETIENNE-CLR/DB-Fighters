@@ -17,7 +17,7 @@ namespace DBFighters.Views.Screens
 
         public TitleScreen(double ratio, int baseWidth = 520) : base(ratio, baseWidth)
         {
-            f = new Fighter(new Vector2(0, 0), Vector2.Zero, 1);
+            f = new Fighter(new Vector2(0, 0), Vector2.Zero);
         }
 
         public override void LoadContent(ContentManager content)

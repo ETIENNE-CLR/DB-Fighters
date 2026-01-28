@@ -1,6 +1,7 @@
 ﻿using DBFighters.Config;
 using DBFighters.Interfaces;
 using DBFighters.Managers;
+using DBFighters.Windows;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -29,7 +30,7 @@ namespace DBFighters.Models.Base
         public string AnimationName { get; protected set; }
 
 
-        public Size Size => new Size(CurrentAnimation.CurrentFrame.Width, CurrentAnimation.CurrentFrame.Height);
+        public Size Dimension => new Size(CurrentAnimation.CurrentFrame.Width, CurrentAnimation.CurrentFrame.Height);
 
         /// <summary>
         /// L'animation courante
@@ -50,7 +51,7 @@ namespace DBFighters.Models.Base
         /// <param name="position">La position initiale de l'entité</param>
         /// <param name="velocity">La vélocité initiale de l'entité</param>
         /// <param name="scale">Facteur de zoom pour l'affichage</param>
-        protected AnimatedElement(Vector2 position, Vector2 velocity, int scale = 1) : base(position, velocity, scale)
+        protected AnimatedElement(Vector2 position, Vector2 velocity, double scale = 1) : base(position, velocity, scale)
         {
             Animations = new Dictionary<string, Animation>();
             AnimationName = null;
@@ -75,21 +76,23 @@ namespace DBFighters.Models.Base
             // Init
             Animation anim = CurrentAnimation;
             Rectangle sprite = CurrentAnimation.CurrentFrame;
-            Rectangle src = new Rectangle(((int)sprite.X), ((int)sprite.Y), Size.Width, Size.Height);
+            Rectangle src = new Rectangle(((int)sprite.X), ((int)sprite.Y), Dimension.Width, Dimension.Height);
             Rectangle dst = Hitbox;
             SpriteEffects effects = this.Flipped ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
 
             // Draw
             spriteBatch.Draw(
-                this.Texture.Img,   // Texture2D
-                dst,                // Rectangle destination (à l'écran)
-                src,                // Rectangle source (dans la texture)
-                Color.White,        // Couleur (White = pas de teinte)
-                0f,                 // Rotation
-                Vector2.Zero,       // Origin
-                effects,            // Flip horizontal / none
-                0f                  // LayerDepth
+                Texture.Img,
+                position: new Vector2(dst.X, dst.Y),
+                sourceRectangle: src,
+                color: Color.White,
+                rotation: 0f,
+                origin: Vector2.Zero,
+                scale: ((float)Scale),
+                effects: effects,
+                layerDepth: 0f
             );
+
 
             // Show Hitbox
             if (ShowHitbox)

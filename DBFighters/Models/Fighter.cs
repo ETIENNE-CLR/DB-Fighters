@@ -17,7 +17,7 @@ namespace DBFighters.Models
     /// </summary>
     internal class Fighter : AnimatedElement
     {
-        public Fighter(Vector2 position, Vector2 velocity, int scale = 1) : base(position, velocity, scale)
+        public Fighter(Vector2 position, Vector2 velocity, double scale = 1.5) : base(position, velocity, scale)
         {
             TextureName = "BlackGoku";
         }
@@ -29,8 +29,7 @@ namespace DBFighters.Models
             // Animations
             Animations["idle"] = Animation.FromSpriteSheet(new Sprite(new Size(50, 50), new Vector2(16, 38), new Vector2(7, 0)), true, 4, 205, true);
             AnimationName = "idle";
-
-            int x = "coucou";
+            CurrentAnimation.Play();
         }
 
         public override void UpdateFlipped()
