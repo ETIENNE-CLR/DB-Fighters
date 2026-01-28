@@ -1,6 +1,7 @@
 ﻿using DBFighters.Config;
 using DBFighters.Interfaces;
 using DBFighters.Managers;
+using DBFighters.Utils;
 using DBFighters.Windows;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -29,6 +30,10 @@ namespace DBFighters.Models.Base
         /// </summary>
         public string AnimationName { get; protected set; }
 
+        /// <summary>
+        /// Si l'élement peut bouger
+        /// </summary>
+        public bool CanMove { get; protected set; }
 
         public override Size Dimension => new Size(CurrentAnimation.CurrentFrame.Width, CurrentAnimation.CurrentFrame.Height);
 
@@ -49,20 +54,19 @@ namespace DBFighters.Models.Base
         /// Constructeur de la classe Entity.
         /// </summary>
         /// <param name="position">La position initiale de l'entité</param>
-        /// <param name="velocity">La vélocité initiale de l'entité</param>
+        /// <param name="speed">La vitesse initiale de l'entité</param>
         /// <param name="scale">Facteur de zoom pour l'affichage</param>
-        protected AnimatedElement(Vector2 position, Vector2 velocity, double scale = 1) : base(position, velocity, scale)
+        protected AnimatedElement(Vector2 position, Vector2 speed, double scale = 1) : base(position, speed, scale)
         {
             Animations = new Dictionary<string, Animation>();
             AnimationName = null;
+            CanMove = true;
         }
 
-        /// <summary>
-        /// Fonction qui définit la condition pour laquel l'élement est flip.
-        /// Elle doit redéfinir la propriété dans chaque classe hérité !
-        /// </summary>
-        public abstract void UpdateFlipped();
-        public abstract void LoadContent(ContentManager content);
+        public virtual void LoadContent(ContentManager content)
+        {
+            throw new NotImplementedException();
+        }
 
         public virtual void Update(GameTime gameTime)
         {
@@ -93,20 +97,8 @@ namespace DBFighters.Models.Base
                 layerDepth: 0f
             );
 
-
             // Show Hitbox
-            if (ShowHitbox)
-            {
-                // Init
-                int thickness = 2;
-                Color color = Color.Red;
-
-                // Tracer les 4 côtés
-                spriteBatch.Draw(AssetsManager.WhitePixel, new Rectangle(dst.X, dst.Y, dst.Width, thickness), color); // Haut
-                spriteBatch.Draw(AssetsManager.WhitePixel, new Rectangle(dst.X, dst.Y, thickness, dst.Height), color); // Gauche
-                spriteBatch.Draw(AssetsManager.WhitePixel, new Rectangle(dst.X + dst.Width - thickness, dst.Y, thickness, dst.Height), color); // Droite
-                spriteBatch.Draw(AssetsManager.WhitePixel, new Rectangle(dst.X, dst.Y + dst.Height - thickness, dst.Width, thickness), color); // Bas
-            }
+            if (ShowHitbox) LogicsUtils.DrawHitbox(spriteBatch, dst);
         }
     }
 }

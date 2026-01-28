@@ -20,7 +20,12 @@ namespace DBFighters.Models.Base
         /// <summary>
         /// Position de l'élement
         /// </summary>
-        public Vector2 Position { get; protected set; }
+        protected Vector2 position;
+
+        /// <summary>
+        /// Position de l'élement
+        /// </summary>
+        public Vector2 Position { get => position; }
 
         /// <summary>
         /// Nom de la texture associée
@@ -28,9 +33,26 @@ namespace DBFighters.Models.Base
         public string TextureName { get; protected set; }
 
         /// <summary>
-        /// Vélocité de l'élement
+        /// Vitesse au moment T de l'élement
         /// </summary>
-        public Vector2 Velocity { get; protected set; }
+        protected Vector2 velocity;
+
+        /// <summary>
+        /// Vitesse au moment T de l'élement
+        /// </summary>
+        public Vector2 Velocity { get => velocity; }
+
+
+        /// <summary>
+        /// Vitese de base de l'élement
+        /// </summary>
+        protected Vector2 speed;
+
+        /// <summary>
+        /// Vitese de base de l'élement
+        /// </summary>
+        public Vector2 Speed { get => speed; }
+
 
         /// <summary>
         /// Facteur de zoom pour l'affichage
@@ -65,7 +87,7 @@ namespace DBFighters.Models.Base
         /// <summary>
         /// Hitbox de l'élement
         /// </summary>
-        public Rectangle Hitbox
+        public virtual Rectangle Hitbox
         {
             get
             {
@@ -88,12 +110,13 @@ namespace DBFighters.Models.Base
         /// Constructeur de la classe...
         /// </summary>
         /// <param name="position">La position initiale de l'entité</param>
-        /// <param name="velocity">La vélocité initiale de l'entité</param>
+        /// <param name="speed">La vitesse de l'élement</param>
         /// <param name="scale">Facteur de zoom pour l'affichage</param>
-        public GameElement(Vector2 position, Vector2 velocity, double scale)
+        public GameElement(Vector2 position, Vector2 speed, double scale)
         {
-            Position = position;
-            Velocity = velocity;
+            this.position = position;
+            this.speed = speed;
+            this.velocity = Vector2.Zero;
             Scale = scale;
 
             TextureName = null;
