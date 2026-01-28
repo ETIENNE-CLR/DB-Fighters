@@ -14,6 +14,11 @@ namespace DBFighters.Enums
         /// <summary>
         /// Champ représantant l'id de l'écran titre
         /// </summary>
-        TITLESCREEN
+        TITLESCREEN,
+
+        /// <summary>
+        /// Champ représantant l'id de l'écran de jeu
+        /// </summary>
+        GAMESCREEN,
     }
 }
